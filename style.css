@@ -1,4 +1,5 @@
 :root {
+    /* Light Mode (default) */
     --bg-color: #ffffff;
     --text-color: #37352f;
     --light-gray: #f7f6f3;
@@ -7,6 +8,23 @@
     --hover-bg: #f1f1ef;
     --tag-bg: #ebeced;
     --tag-text: #787774;
+    --secondary-text: #6b6b6b;
+    --accent-color: #141414;
+    --logo-filter: none;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #e6e6e6;
+    --light-gray: #2d2d2d;
+    --notion-blue: #2d9cff;
+    --border-color: #3a3a3a;
+    --hover-bg: #2a2a2a;
+    --tag-bg: #383838;
+    --tag-text: #bbbbbb;
+    --secondary-text: #a0a0a0;
+    --accent-color: #ffffff;
+    --logo-filter: invert(1);
 }
 
 * {
@@ -20,9 +38,10 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;
-    max-width: 970px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 40px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header {
@@ -35,6 +54,8 @@ body {
     width: 80px;
     height: 80px;
     margin-bottom: 24px;
+    filter: var(--logo-filter);
+    transition: filter 0.3s ease;
 }
 
 h1 {
@@ -46,10 +67,11 @@ h1 {
 
 .subtitle {
     font-size: 18px;
-    color: #6b6b6b;
+    color: var(--secondary-text);
     margin-bottom: 32px;
     text-align: center;
     max-width: 600px;
+    transition: color 0.3s ease;
 }
 
 .date-header {
@@ -58,6 +80,7 @@ h1 {
     margin-bottom: 16px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
 }
 
 .job-list {
@@ -88,7 +111,7 @@ h1 {
     content: "Apply →";
     position: absolute;
     right: 16px;
-    color: #141414;
+    color: var(--accent-color);
     font-weight: 500;
 }
 
@@ -102,6 +125,7 @@ h1 {
     justify-content: center;
     border-radius: 4px;
     flex-shrink: 0;
+    transition: background-color 0.3s ease;
 }
 
 .job-title {
@@ -117,13 +141,15 @@ h1 {
     border-radius: 4px;
     font-size: 12px;
     margin-top: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer {
     margin-top: 48px;
     text-align: center;
-    color: #6b6b6b;
+    color: var(--secondary-text);
     font-size: 14px;
+    transition: color 0.3s ease;
 }
 
 /* Animation for hover state */
@@ -138,13 +164,82 @@ h1 {
     top: 0;
     height: 100%;
     width: 3px;
-    background-color: #141414;
+    background-color: var(--accent-color);
     transform: scaleY(0);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .job-card:hover::before {
     transform: scaleY(1);
+}
+
+/* Dark mode toggle */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: var(--light-gray);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.slider:before {
+    background-color: var(--bg-color);
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    z-index: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.icon-light, .icon-dark {
+    font-size: 16px;
+    z-index: 0;
+}
+
+input:checked + .slider {
+    background-color: #384254;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 /* Responsive adjustments */
@@ -159,5 +254,15 @@ h1 {
     
     .job-card:hover::after {
         display: none;
+    }
+    
+    .theme-switch-wrapper {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+    }
+    
+    body {
+        padding-top: 60px;
     }
 }
