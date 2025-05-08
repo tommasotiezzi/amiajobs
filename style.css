@@ -88,7 +88,7 @@ h1 {
     content: "Apply →";
     position: absolute;
     right: 16px;
-    color: var(--notion-blue);
+    color: #141414;
     font-weight: 500;
 }
 
@@ -138,7 +138,7 @@ h1 {
     top: 0;
     height: 100%;
     width: 3px;
-    background-color: var(--notion-blue);
+    background-color: #141414;
     transform: scaleY(0);
     transition: transform 0.2s ease;
 }
