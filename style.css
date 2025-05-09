@@ -87,7 +87,7 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
 }
 
 .job-card {
@@ -134,7 +134,10 @@ h1 {
 }
 
 .tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle; /* This helps align with other tags */
+    line-height: normal; /* Prevents line-height issues */
     background-color: var(--tag-bg);
     color: var(--tag-text);
     padding: 2px 8px;
@@ -144,6 +147,37 @@ h1 {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.tag2 {
+    display: inline-flex;
+    align-items: center;
+    background-image: linear-gradient(135deg, var(--gradient-start, #00004d) 0%, var(--gradient-end, #101828) 100%);;
+    color: whitesmoke;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+}
+
+.tag3 {
+    display: inline-flex;
+    align-items: center;
+    background-image: linear-gradient(135deg, var(--gradient-start, #FF6444) 0%, var(--gradient-end, #FF6ADE) 100%);;
+    color: whitesmoke;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+}
+
+.tag-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+}
 .footer {
     margin-top: 48px;
     text-align: center;
